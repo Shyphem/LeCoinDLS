@@ -1,0 +1,20 @@
+{
+  "name": "lcdls",
+  "version": "1.0.0",
+  "description": "Projet Le Coin DLS",
+  "scripts": {
+    "start:backend": "cd backend && node app.js",
+    "start:frontend": "cd frontend && npm run dev",
+    "start": "clear && concurrently \"npm run start:backend\" \"npm run start:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "6.2.1"
+  },
+  "author": "Honyzey",
+  "license": "ISC",
+  "dependencies": {
+    "helmet": "^8.0.0",
+    "multer": "1.4.5-lts.1",
+    "vue-matomo": "^4.2.0"
+  }
+}

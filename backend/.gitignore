@@ -1,0 +1,23 @@
+# Ignorer les fichiers de configuration de l'environnement
+.env
+
+# Ignorer les fichiers JSON contenant des données sensibles ou temporaires
+users.json
+
+# Ignorer les dossiers node_modules et logs
+node_modules/
+logs/
+
+# Ignorer les fichiers de sortie de build
+dist/
+build/
+
+# Ignorer le fichier d'importation
+import.js
+csvToJson.js
+utils/jsonImporter.js
+
+# Ignorer les fichiers de configuration de l'éditeur
+.vscode/
+.idea/
+.DS_Store

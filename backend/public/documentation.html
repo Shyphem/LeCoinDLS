@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation de l'API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #212121;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ddd;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            cursor: pointer;
+            background-color: #2f2f2f;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .menu a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-content {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .section-content p {
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        .section-content h4 {
+            margin-top: 20px;
+            color: #ddd;
+        }
+
+        .section-content pre {
+            background-color: #1f1f1f;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Documentation de l'API</h1>
+
+    <div class="menu">
+        <a href="#auth">Authentification</a>
+        <a href="#annonces">Annonces</a>
+        <a href="#messages">Messages</a>
+        <a href="#users">Utilisateurs</a>
+    </div>
+
+    <div id="auth" class="section">
+        <h2>Authentification</h2>
+        <div>
+            <h3>POST /auth/login</h3>
+            <div class="section-content">
+                <p>Authentifie un utilisateur et retourne un token JWT.</p>
+                <h4>Requête</h4>
+                <pre>
+{
+    "mail": "user@example.com",
+    "password": "password123"
+}
+                </pre>
+                <h4>Réponse</h4>
+                <pre>
+{
+    "message": "Connexion réussie",
+    "token": "jwt_token"
+}
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Utilisateur non trouvé" | "Mot de passe incorrect" | "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="annonces" class="section">
+        <h2>Annonces</h2>
+        <div>
+            <h3>POST /annonces</h3>
+            <div class="section-content">
+                <p>Crée une nouvelle annonce.</p>
+                <h4>Requête</h4>
+                <pre>
+{
+    "user_id": 1,
+    "title": "Titre de l'annonce",
+    "categorie": "Catégorie",
+    "prix": 100.0,
+    "description": "Description de l'annonce"
+}
+                </pre>
+                <h4>Réponse</h4>
+                <pre>
+{
+    "id": 1,
+    "user_id": 1,
+    "title": "Titre de l'annonce",
+    "categorie": "Catégorie",
+    "prix": 100.0,
+    "description": "Description de l'annonce",
+    "etat": "en_vente",
+    "creation_date": "2023-01-01T00:00:00.000Z"
+}
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+        <div>
+            <h3>GET /annonces/:id</h3>
+            <div class="section-content">
+                <p>Récupère une annonce par son ID.</p>
+                <h4>Réponse</h4>
+                <pre>
+{
+    "id": 1,
+    "user_id": 1,
+    "title": "Titre de l'annonce",
+    "categorie": "Catégorie",
+    "prix": 100.0,
+    "description": "Description de l'annonce",
+    "etat": "en_vente",
+    "creation_date": "2023-01-01T00:00:00.000Z"
+}
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Annonce non trouvée" | "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="messages" class="section">
+        <h2>Messages</h2>
+        <div>
+            <h3>POST /messages</h3>
+            <div class="section-content">
+                <p>Envoie un message.</p>
+                <h4>Requête</h4>
+                <pre>
+{
+    "expediteur_id": 1,
+    "destinataire_id": 2,
+    "content": "Contenu du message"
+}
+                </pre>
+                <h4>Réponse</h4>
+                <pre>
+{
+    "id": 1,
+    "expediteur_id": 1,
+    "destinataire_id": 2,
+    "content": "Contenu du message",
+    "send_date": "2023-01-01T00:00:00.000Z",
+    "lu": false
+}
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+        <div>
+            <h3>GET /messages/:userId</h3>
+            <div class="section-content">
+                <p>Récupère tous les messages pour un utilisateur.</p>
+                <h4>Réponse</h4>
+                <pre>
+[
+    {
+        "id": 1,
+        "expediteur_id": 1,
+        "destinataire_id": 2,
+        "content": "Contenu du message",
+        "send_date": "2023-01-01T00:00:00.000Z",
+        "lu": false
+    }
+]
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+        <div>
+            <h3>PUT /messages/:id/read</h3>
+            <div class="section-content">
+                <p>Marque un message comme lu.</p>
+                <h4>Réponse</h4>
+                <pre>
+{
+    "message": "Message marqué comme lu"
+}
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Message non trouvé" | "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="users" class="section">
+        <h2>Utilisateurs</h2>
+        <div>
+            <h3>GET /users/:id</h3>
+            <div class="section-content">
+                <p>Récupère les informations d'un utilisateur par son ID.</p>
+                <h4>Réponse</h4>
+                <pre>
+{
+    "id": 1,
+    "mail": "user@example.com",
+    "password": "hashed_password",
+    "level": "user",
+    "identifiant": "user1",
+    "inscription_date": "2023-01-01T00:00:00.000Z",
+    "last_connexion": "2023-01-01T00:00:00.000Z",
+    "statut": "actif",
+    "Annonces": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "title": "Titre de l'annonce",
+            "categorie": "Catégorie",
+            "prix": 100.0,
+            "description": "Description de l'annonce",
+            "etat": "en_vente",
+            "creation_date": "2023-01-01T00:00:00.000Z"
+        }
+    ]
+}
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Utilisateur non trouvé" | "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+        <div>
+            <h3>GET /users/profile</h3>
+            <div class="section-content">
+                <p>Récupère le profil de l'utilisateur connecté.</p>
+                <h4>Réponse</h4>
+                <pre>
+{
+    "mail": "user@example.com",
+    "identifiant": "user1",
+    "inscription_date": "01/01/2023 00:00:00",
+    "annonces": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "title": "Titre de l'annonce",
+            "categorie": "Catégorie",
+            "prix": 100.0,
+            "description": "Description de l'annonce",
+            "etat": "en_vente",
+            "creation_date": "2023-01-01T00:00:00.000Z"
+        }
+    ]
+}
+                </pre>
+                <h4>Erreur</h4>
+                <pre>
+{
+    "message": "Utilisateur non trouvé" | "Erreur serveur"
+}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.section h3').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+
+        // Initialiser tous les contenus de section comme cachés
+        document.querySelectorAll('.section-content').forEach(content => {
+            content.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
