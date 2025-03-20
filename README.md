@@ -22,19 +22,9 @@ Bienvenue sur Le Coin DLS, une plateforme de petites annonces dédiée aux élè
 
 ---
 
-📄 **Pages et Structure**
-
-- Page d'accueil [index.html](https://github.com/Shyphem/Le-Coin-DLS/blob/main/Le_Coin_DLS/public/index.html) : Affiche les dernières annonces publiées et propose une barre de recherche pour filtrer les annonces.
-- Page d'annonces [liste-annonce.html](https://github.com/Shyphem/Le-Coin-DLS/blob/main/Le_Coin_DLS/public/liste-annonce.html) : Liste l'ensemble des annonces disponibles, avec un affichage cohérent et une taille d'image ajustée automatiquement.
-- Détail de l'annonce [view-annonce.html](https://github.com/Shyphem/Le-Coin-DLS/blob/main/Le_Coin_DLS/public/view-annonce.html) : Affiche une annonce spécifique avec ses détails complets, ainsi que l'option de contacter le vendeur.
-- Page de profil [profil.html](https://github.com/Shyphem/Le-Coin-DLS/blob/main/Le_Coin_DLS/public/profil.html) : Affiche les informations de l'utilisateur connecté, telles que son pseudo, email, et la liste de ses annonces.
-- Chat en ligne [chat.html](https://github.com/Shyphem/Le-Coin-DLS/blob/main/Le_Coin_DLS/public/chat.html) : Permet une communication directe entre l'acheteur et le vendeur.
-
----
-
 🛠️ **Technologies utilisées**
 
 - Frontend : HTML, CSS, JavaScript
-- Backend : Node.js avec Express pour gérer les requêtes de chat en direct
+- Backend : Vue.js
 - Base de données : MySQL pour stocker les utilisateurs et leurs annonces
 - Authentification : Système de gestion de comptes sécurisé avec génération de pseudonymes
